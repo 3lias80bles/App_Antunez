@@ -1,0 +1,1 @@
+ /home/eliasrobles/Documentos/DM/App_Antunez/antunez_app/.dart_tool/flutter_build/e4698debd07b98f9f7ba21de441ca54a/native_assets.json: 

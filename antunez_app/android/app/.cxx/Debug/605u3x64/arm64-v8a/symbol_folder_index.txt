@@ -1,0 +1,1 @@
+/home/eliasrobles/Documentos/DM/App_Antunez/antunez_app/build/app/intermediates/cxx/Debug/605u3x64/obj/arm64-v8a
