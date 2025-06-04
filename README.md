@@ -26,11 +26,7 @@ Que tal, este es nuestro repositorio **¡AntunezApp!**. Una aplicación móvil d
 - Cada calculo tendrá su propia pantalla.
 - Datos simples.
 - Actualización: Gráficos interactivos (ej: torta, barras) usando `fl_chart` o `charts_flutter`.  
-- Se pretende acutalizar para exportar resultados en **PDF**.  
-
-### 🔄 **Persistencia de Datos**  
-- Almacenamiento local con **SQLite** o **Hive**.  
-- Historial de cálculos anteriores.  
+- Se pretende actualizar para exportar resultados en **PDF**.    
 
 ---
 
