@@ -1,9 +1,108 @@
 // Kevin Rafael Díaz López - 04/06/2025
 // Archivo que contiene la pantalla de calcular volumen
 import 'package:flutter/material.dart';
+import 'dart:math';
 
-class ScreenVolume extends StatelessWidget {
+class ScreenVolume extends StatefulWidget {
   const ScreenVolume({super.key});
+
+  @override
+  State<ScreenVolume> createState() => _ScreenVolumeState();
+}
+
+class _ScreenVolumeState extends State<ScreenVolume> {
+  final TextEditingController _alturaController = TextEditingController();
+  final TextEditingController _diametroController = TextEditingController();
+
+  void _calculateVolume() {
+    // Aquí puedes implementar la lógica para calcular el volumen
+    // utilizando el valor de _alturaController.text.
+    // Por ejemplo, podrías convertirlo a un número y realizar cálculos.
+    double altura = double.tryParse(_alturaController.text) ?? 0.0;
+    double diametro = double.tryParse(_diametroController.text) ?? 0.0;
+    // Realiza el cálculo del volumen aquí...
+
+    if (diametro <= 7.5) {
+      // Mostrar un mensaje de error si la altura no es válida
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Color.fromARGB(255, 188, 71, 73),
+          content: Text(
+            'Por favor, ingresa una altura válida. \nEl diámetro debe ser mayor o igual a 7.5 cm.',
+            textAlign: TextAlign.center,
+          ),
+        ),
+      );
+    } else {
+      // Lógica para calcular el volumen
+      double a, b, c;
+      if (diametro < 32.5) {
+        a = 0.000026;
+        b = 2.129789;
+        c = 0.984286;
+      } else if (diametro >= 32.5 && diametro < 39) {
+        a = 0.000054;
+        b = 1.990294;
+        c = 0.897275;
+      } else {
+        a = 0.000110;
+        b = 1.871412;
+        c = 0.828973;
+      }
+
+      double volumen =
+          a * pow(diametro, b).toDouble() * pow(altura, c).toDouble();
+
+      // Mostrar el resultado en un SnackBar
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: Color.fromARGB(255, 106, 153, 78),
+            title: Text(
+              'Resultado del cálculo',
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image(
+                  image: AssetImage('assets/results.png'),
+                  width: 20,
+                  height: 20,
+                ),
+                Text(
+                  'El volumen fustal es: ${volumen.toStringAsFixed(2)} m³',
+                  style: TextStyle(fontSize: 22),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'Los parámetros se optimizaron mediante la regresión cuantílica (véase Antúnez et al., 2023).',
+                  style: TextStyle(fontSize: 14),
+                  textAlign: TextAlign.justify,
+                ),
+              ],
+            ),
+            actions: [
+              TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: Color.fromARGB(255, 242, 232, 207),
+                  foregroundColor: Colors.black,
+                ),
+                onPressed: () {
+                  Navigator.pop(context); // Cierra el AlertDialog
+                },
+                child: Text('Cerrar', style: TextStyle(fontSize: 18)),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
+    return;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +110,12 @@ class ScreenVolume extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Calcular Volumen',
-          style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+          textAlign: TextAlign.center,
         ),
         leading: IconButton(
           icon: Icon(Icons.home_filled, size: 25),
@@ -30,8 +134,8 @@ class ScreenVolume extends StatelessWidget {
               padding: EdgeInsets.all(20),
               child: Image(
                 image: AssetImage('assets/image_volume.png'),
-                width: 220,
-                height: 220,
+                width: 250,
+                height: 250,
               ),
             ),
             SizedBox(height: 20),
@@ -43,8 +147,12 @@ class ScreenVolume extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  hintText: 'Diámetro Normal (cm)',
+                  labelText: 'Diámetro Normal (cm)',
+                  labelStyle: TextStyle(fontSize: 20),
                 ),
+                keyboardType: TextInputType.number,
+                controller: _diametroController,
+                style: TextStyle(color: Colors.black),
               ),
             ),
             SizedBox(height: 20),
@@ -56,15 +164,29 @@ class ScreenVolume extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  hintText: 'Altura Total (m)',
+                  labelText: 'Altura (m)',
+                  labelStyle: TextStyle(fontSize: 20),
                 ),
+                keyboardType: TextInputType.number,
+                controller: _alturaController,
+                style: TextStyle(color: Colors.black),
               ),
             ),
             SizedBox(height: 70),
             ElevatedButton.icon(
-              onPressed: () {},
-              label: Icon(Icons.calculate_rounded, color: Color.fromARGB(255, 242, 232, 207), size: 30,),
-              icon: Text('Calcular', style: TextStyle(color: Color.fromARGB(255, 242, 232, 207), fontSize: 20)),
+              onPressed: _calculateVolume,
+              label: Icon(
+                Icons.calculate_rounded,
+                color: Color.fromARGB(255, 242, 232, 207),
+                size: 30,
+              ),
+              icon: Text(
+                'Calcular',
+                style: TextStyle(
+                  color: Color.fromARGB(255, 242, 232, 207),
+                  fontSize: 20,
+                ),
+              ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color.fromARGB(255, 56, 102, 65),
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
