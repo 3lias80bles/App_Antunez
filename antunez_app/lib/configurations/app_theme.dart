@@ -9,12 +9,12 @@ final appColorScheme = ColorScheme.fromSeed(
 );
 
 // Varible final que define el estilo que se le dara a los textos de la aplicacion.
-final appTextTheme = GoogleFonts.robotoTextTheme().copyWith(
-  bodyMedium: GoogleFonts.roboto(fontWeight: FontWeight.normal, fontSize: 16),
-  bodyLarge: GoogleFonts.roboto(fontWeight: FontWeight.normal, fontSize: 18),
-  titleLarge: GoogleFonts.roboto(fontWeight: FontWeight.bold, fontSize: 20),
-  titleMedium: GoogleFonts.roboto(fontWeight: FontWeight.bold, fontSize: 18),
-  titleSmall: GoogleFonts.roboto(fontWeight: FontWeight.bold, fontSize: 16),
+final appTextTheme = GoogleFonts.josefinSansTextTheme().copyWith(
+  bodyMedium: GoogleFonts.josefinSans(fontWeight: FontWeight.normal, fontSize: 16),
+  bodyLarge: GoogleFonts.josefinSans(fontWeight: FontWeight.normal, fontSize: 18),
+  titleLarge: GoogleFonts.josefinSans(fontWeight: FontWeight.bold, fontSize: 20),
+  titleMedium: GoogleFonts.josefinSans(fontWeight: FontWeight.bold, fontSize: 18),
+  titleSmall: GoogleFonts.josefinSans(fontWeight: FontWeight.bold, fontSize: 16),
 );
 
 final appTheme = ThemeData().copyWith(

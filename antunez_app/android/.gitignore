@@ -11,3 +11,8 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
+
+# Archivos de construcción de Android
+**/app/build/
+**/*.apk
+**/*.aab
