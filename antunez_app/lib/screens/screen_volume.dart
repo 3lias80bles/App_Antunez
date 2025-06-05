@@ -26,8 +26,9 @@ class _ScreenVolumeState extends State<ScreenVolume> {
       // Mostrar un mensaje de error si la altura no es válida
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
+          backgroundColor: Color.fromARGB(255, 188, 71, 73),
           content: Text(
-            'Por favor, ingresa una altura válida. El diámetro debe ser mayor o igual a 7.5 cm.',
+            'Por favor, ingresa una altura válida. \nEl diámetro debe ser mayor o igual a 7.5 cm.', textAlign: TextAlign.center,
           ),
         ),
       );
@@ -56,7 +57,7 @@ class _ScreenVolumeState extends State<ScreenVolume> {
         context: context,
         builder: (BuildContext context) {
           return Container(
-            height: 300,
+            height: 250,
             color: Color.fromARGB(255, 56, 102, 65),
             padding: EdgeInsets.all(20),
             child: Column(
@@ -69,16 +70,20 @@ class _ScreenVolumeState extends State<ScreenVolume> {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Los parámetros se optimizaron mediante la regresión cuantílica (véase Antúnez et al., 2023)',
+                  'Los parámetros se optimizaron mediante la regresión cuantílica (véase Antúnez et al., 2023).',
                   style: TextStyle(fontSize: 14),
                   textAlign: TextAlign.justify,
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 40),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pop(context); // Cierra el BottomSheet
                   },
-                  child: Text('Cerrar'),
+                  style: ButtonStyle(),
+                  child: Text(
+                    'Cerrar',
+                    style: TextStyle(color: Colors.black, fontSize: 18, ),
+                  ),
                 ),
               ],
             ),
