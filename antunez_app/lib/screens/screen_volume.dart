@@ -28,7 +28,8 @@ class _ScreenVolumeState extends State<ScreenVolume> {
         SnackBar(
           backgroundColor: Color.fromARGB(255, 188, 71, 73),
           content: Text(
-            'Por favor, ingresa una altura válida. \nEl diámetro debe ser mayor o igual a 7.5 cm.', textAlign: TextAlign.center,
+            'Por favor, ingresa una altura válida. \nEl diámetro debe ser mayor o igual a 7.5 cm.',
+            textAlign: TextAlign.center,
           ),
         ),
       );
@@ -53,20 +54,27 @@ class _ScreenVolumeState extends State<ScreenVolume> {
           a * pow(diametro, b).toDouble() * pow(altura, c).toDouble();
 
       // Mostrar el resultado en un SnackBar
-      showModalBottomSheet(
+      showDialog(
         context: context,
         builder: (BuildContext context) {
-          return Container(
-            height: 250,
-            color: Color.fromARGB(255, 56, 102, 65),
-            padding: EdgeInsets.all(20),
-            child: Column(
+          return AlertDialog(
+            backgroundColor: Color.fromARGB(255, 106, 153, 78),
+            title: Text(
+              'Resultado del cálculo',
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+            content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                Image(
+                  image: AssetImage('assets/results.png'),
+                  width: 20,
+                  height: 20,
+                ),
                 Text(
                   'El volumen fustal es: ${volumen.toStringAsFixed(2)} m³',
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 22),
                 ),
                 SizedBox(height: 10),
                 Text(
@@ -74,19 +82,20 @@ class _ScreenVolumeState extends State<ScreenVolume> {
                   style: TextStyle(fontSize: 14),
                   textAlign: TextAlign.justify,
                 ),
-                SizedBox(height: 40),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context); // Cierra el BottomSheet
-                  },
-                  style: ButtonStyle(),
-                  child: Text(
-                    'Cerrar',
-                    style: TextStyle(color: Colors.black, fontSize: 18, ),
-                  ),
-                ),
               ],
             ),
+            actions: [
+              TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: Color.fromARGB(255, 242, 232, 207),
+                  foregroundColor: Colors.black,
+                ),
+                onPressed: () {
+                  Navigator.pop(context); // Cierra el AlertDialog
+                },
+                child: Text('Cerrar', style: TextStyle(fontSize: 18)),
+              ),
+            ],
           );
         },
       );
@@ -125,8 +134,8 @@ class _ScreenVolumeState extends State<ScreenVolume> {
               padding: EdgeInsets.all(20),
               child: Image(
                 image: AssetImage('assets/image_volume.png'),
-                width: 220,
-                height: 220,
+                width: 250,
+                height: 250,
               ),
             ),
             SizedBox(height: 20),
@@ -138,7 +147,8 @@ class _ScreenVolumeState extends State<ScreenVolume> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  hintText: 'Diámetro Normal (cm)',
+                  labelText: 'Diámetro Normal (cm)',
+                  labelStyle: TextStyle(fontSize: 20),
                 ),
                 keyboardType: TextInputType.number,
                 controller: _diametroController,
@@ -154,7 +164,8 @@ class _ScreenVolumeState extends State<ScreenVolume> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  hintText: 'Altura Total (m)',
+                  labelText: 'Altura (m)',
+                  labelStyle: TextStyle(fontSize: 20),
                 ),
                 keyboardType: TextInputType.number,
                 controller: _alturaController,
