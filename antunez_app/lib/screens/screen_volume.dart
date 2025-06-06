@@ -5,6 +5,8 @@ import 'dart:math';
 
 class ScreenVolume extends StatefulWidget {
   const ScreenVolume({super.key});
+  static const String routeName = '/volume';
+
 
   @override
   State<ScreenVolume> createState() => _ScreenVolumeState();
