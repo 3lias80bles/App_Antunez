@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:antunez_app/screens/screen_volume.dart';
-//import 'package:antunez_app/screens/screen_biomas.dart';
+//import 'package:antunez_app/screens/screen_volume.dart';
+import 'package:antunez_app/screens/screen_biomas.dart';
 import 'package:antunez_app/configurations/app_theme.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Aplicacion forestal',
       theme: appTheme,
       debugShowCheckedModeBanner: false,
-      home: const ScreenVolume()
+      home: const ScreenBiomas()
     );
   }
 }
