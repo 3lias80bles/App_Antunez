@@ -266,7 +266,15 @@
       "languageVersion": "3.7"
     }
   ],
+<<<<<<< HEAD
   "generated": "2025-06-06T00:07:36.755397Z",
+=======
+<<<<<<< HEAD
+  "generated": "2025-06-06T00:05:18.162029Z",
+=======
+  "generated": "2025-06-05T23:22:32.950092Z",
+>>>>>>> a020321c188607c22a54ac29b279639f67cf9b7a
+>>>>>>> 9b5aa4ae27bd1b1cdf46f829bfd59b3730256c90
   "generator": "pub",
   "generatorVersion": "3.7.0",
   "flutterRoot": "file:///home/eliasrobles/snap/flutter/common/flutter",

@@ -1,16 +1,11 @@
-# antunez_app
+# 🌳 **AntunezApp: Calculadora de Biomasa Forestal**  
 
-A new Flutter project.
+Que tal, este es nuestro repositorio **AntunezApp**. Una aplicación móvil desarrollada en el framework **Flutter (Dart)** para calcular el volumen de árboles individuales y de biomas forestales. Este proyecto fue realizado como **examen del tercer parcial** de la materia *"Programación de Dispositivos Móviles"* en el **6to semestre** de la Licenciatura en Informática, impartida por el **Dr. Alberto Martínez Barbosa**.  
 
-## Getting Started
+## 📌 **Equipo de Desarrollo**  
+- **Integrantes:**  
+  - [Kevin Rafael Díaz López](https://github.com/RafaelDiaz01)  
+  - [Rosendo Eden Mendoza Casarrubia](https://github.com/EdenMCa)  
+  - [Sergio Elias Robles Ignacio](https://github.com/3lias80bles)  
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---

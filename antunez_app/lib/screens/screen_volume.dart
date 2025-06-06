@@ -15,12 +15,10 @@ class _ScreenVolumeState extends State<ScreenVolume> {
   final TextEditingController _diametroController = TextEditingController();
 
   void _calculateVolume() {
-    // Aquí puedes implementar la lógica para calcular el volumen
+    // Aquí se implementa la lógica para calcular el volumen
     // utilizando el valor de _alturaController.text.
-    // Por ejemplo, podrías convertirlo a un número y realizar cálculos.
     double altura = double.tryParse(_alturaController.text) ?? 0.0;
     double diametro = double.tryParse(_diametroController.text) ?? 0.0;
-    // Realiza el cálculo del volumen aquí...
 
     if (diametro <= 7.5) {
       // Mostrar un mensaje de error si la altura no es válida
@@ -50,45 +48,46 @@ class _ScreenVolumeState extends State<ScreenVolume> {
         c = 0.828973;
       }
 
-      double volumen =
-          a * pow(diametro, b).toDouble() * pow(altura, c).toDouble();
+      double volumen = a * pow(diametro, b).toDouble() * pow(altura, c).toDouble();
 
-      // Mostrar el resultado en un SnackBar
+      // Mostrar el resultado en un showDialog
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            backgroundColor: Color.fromARGB(255, 106, 153, 78),
+            backgroundColor: Color.fromARGB(255, 242, 232, 207),
             title: Text(
-              'Resultado del cálculo',
+              'Resultado del Cálculo',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                SizedBox(height: 30),
                 Image(
                   image: AssetImage('assets/results.png'),
-                  width: 20,
-                  height: 20,
+                  width: 150,
+                  height: 150,
                 ),
                 Text(
-                  'El volumen fustal es: ${volumen.toStringAsFixed(2)} m³',
-                  style: TextStyle(fontSize: 22),
+                  'El volumen fustal es ${volumen.toStringAsFixed(2)} m³',
+                  style: TextStyle(fontSize: 24, color: Colors.black, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 10),
                 Text(
                   'Los parámetros se optimizaron mediante la regresión cuantílica (véase Antúnez et al., 2023).',
-                  style: TextStyle(fontSize: 14),
-                  textAlign: TextAlign.justify,
+                  style: TextStyle(fontSize: 13, color: Colors.black),
+                  textAlign: TextAlign.center,
                 ),
+                SizedBox(height: 25),
               ],
             ),
             actions: [
               TextButton(
                 style: TextButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 242, 232, 207),
-                  foregroundColor: Colors.black,
+                  backgroundColor: Color.fromARGB(255, 188, 71, 73),
+                  foregroundColor: const Color.fromARGB(255, 255, 255, 255),
                 ),
                 onPressed: () {
                   Navigator.pop(context); // Cierra el AlertDialog
