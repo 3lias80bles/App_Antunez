@@ -5,6 +5,7 @@ import 'dart:math';
 
 class ScreenBiomas extends StatefulWidget {
   const ScreenBiomas({super.key});
+  static const String routeName = '/biomas';
 
   @override
   State<ScreenBiomas> createState() => _ScreenBiomasState();
