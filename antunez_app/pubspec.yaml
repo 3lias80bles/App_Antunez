@@ -63,10 +63,6 @@ flutter:
     - assets/image_volume.png
     - assets/results.png
     - assets/image_bioma.png
-<<<<<<< HEAD
-
-=======
->>>>>>> Sergio.Robles
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
