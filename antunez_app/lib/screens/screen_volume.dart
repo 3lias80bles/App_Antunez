@@ -5,6 +5,7 @@ import 'dart:math';
 
 class ScreenVolume extends StatefulWidget {
   const ScreenVolume({super.key});
+  static const String routeName = '/volume';
 
   @override
   State<ScreenVolume> createState() => _ScreenVolumeState();
@@ -20,13 +21,13 @@ class _ScreenVolumeState extends State<ScreenVolume> {
     double altura = double.tryParse(_alturaController.text) ?? 0.0;
     double diametro = double.tryParse(_diametroController.text) ?? 0.0;
 
-    if (diametro <= 7.5) {
+    if (diametro <= 7.5 || diametro > 400) {
       // Mostrar un mensaje de error si la altura no es válida
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: Color.fromARGB(255, 188, 71, 73),
           content: Text(
-            'Por favor, ingresa una altura válida. \nEl diámetro debe ser mayor o igual a 7.5 cm.',
+            'Por favor, ingrese datos válidos. \nEl diámetro debe ser mayor o igual a 7.5 cm.',
             textAlign: TextAlign.center,
           ),
         ),
@@ -48,7 +49,8 @@ class _ScreenVolumeState extends State<ScreenVolume> {
         c = 0.828973;
       }
 
-      double volumen = a * pow(diametro, b).toDouble() * pow(altura, c).toDouble();
+      double volumen =
+          a * pow(diametro, b).toDouble() * pow(altura, c).toDouble();
 
       // Mostrar el resultado en un showDialog
       showDialog(
@@ -70,9 +72,14 @@ class _ScreenVolumeState extends State<ScreenVolume> {
                   width: 150,
                   height: 150,
                 ),
+                SizedBox(height: 30),
                 Text(
                   'El volumen fustal es ${volumen.toStringAsFixed(2)} m³',
-                  style: TextStyle(fontSize: 24, color: Colors.black, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(height: 10),
                 Text(
